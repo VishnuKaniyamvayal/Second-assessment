@@ -1,0 +1,25 @@
+#logo{
+    height: 150px;
+    width: 150px;
+}
+
+.header{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+#net_amount{
+    color: green;
+
+}
+input#calculate_button{
+    height: 10px;
+    font-size: 10px;
+    width: 70px;
+}
