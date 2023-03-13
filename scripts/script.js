@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	//constanats
 
-	var amount_margin = 2000;
+	var alphanumeric_regex = /^[A-Za-z0-9]+$/;
 	var date_regex=/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
 	
 	// adding a custom method for validating only letters in name section 
@@ -19,6 +19,12 @@ $(document).ready(function(){
 }, "Please enter a valid date in the format DD/MM/YYYY");
 
 
+//custom method for alphanumeric numbers
+
+jQuery.validator.addMethod("alphanumeric", function(value, element){
+	return this.optional(element) || alphanumeric_regex.test(value) ;
+}, "Special characters not allowed");
+
     $('#visitor_details_form').validate({
         rules:{
 			first_name:{
@@ -35,6 +41,7 @@ $(document).ready(function(){
 				required:true,
 				maxlength:10,
 				minlength:10,
+				alphanumeric:true,
 			},
 			email:{
 				required:true,
@@ -64,6 +71,7 @@ $(document).ready(function(){
 			amount_of_purchase:{
 				required:true,
 				maxlength:10000,
+				number:true,
 			},
 			no_of_items:{
 				required:true,
